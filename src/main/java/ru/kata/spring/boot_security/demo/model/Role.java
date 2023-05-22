@@ -3,16 +3,14 @@ package ru.kata.spring.boot_security.demo.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-import javax.persistence.GenerationType;
 import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "roles")
+@Table( name = "roles")
 public class Role implements GrantedAuthority {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name="id")
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -22,9 +20,7 @@ public class Role implements GrantedAuthority {
         this.name = name;
     }
 
-    public Role() {
-
-    }
+    public Role() {}
 
     public Long getId() {
         return id;
@@ -46,11 +42,11 @@ public class Role implements GrantedAuthority {
     public String getAuthority() {
         return name;
     }
-
     @Override
     public String toString() {
         return this.name;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;

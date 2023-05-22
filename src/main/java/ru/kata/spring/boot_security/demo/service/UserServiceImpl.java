@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
     @Autowired
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -40,9 +39,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     @Transactional()
-    public void deleteUser(Long id) {
-        userRepository.deleteById(id);
-    }
+    public void deleteUser(Long id) { userRepository.deleteById(id);}
 
     @Override
     @Transactional(readOnly = true)
@@ -54,7 +51,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         return userFind;
     }
-
     @Override
     @Transactional(readOnly = true)
     public User findUserByName(String nameUser) {
@@ -65,7 +61,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         }
         return userFindByName;
     }
-
     @Override
     @Transactional()
     public void updateUser(User userUpdate) {

@@ -15,19 +15,16 @@ public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name="id")
     private Long id;
-
-    @NotEmpty(message = "Поле не должно быть пустым")
+    @NotEmpty(message = "Email не должен быть пустым")
     @Size(min = 2, max = 100, message = "Email должен быть от 2 до 100 символов")
-    @Email(message = "Веден некорректный адрес электронной почты")
+    @Email(message = "Введен некорректный адрес электронной почты")
     @Column(name = "userName", unique = true)
     private String userName;
-
-    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символлов")
+    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов")
     @Column(name = "firstName")
     private String firstName;
-
     @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов")
     @Column(name = "lastName")
     private String lastName;
@@ -36,11 +33,12 @@ public class User implements UserDetails {
     @Min(value = 0, message = "Возраст должен быть больше 0")
     @Column(name = "age")
     private int age;
-
+    @NotEmpty(message = "Должен быть введен пароль")
+    @Size(min = 2, max = 100, message = "Пароль должен быть от 6 до 20 символов")
     @Column(name = "password")
     private String password;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

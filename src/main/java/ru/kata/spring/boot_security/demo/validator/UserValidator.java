@@ -11,11 +11,6 @@ public class UserValidator implements Validator {
 
     private final UserService userService;
 
-    public UserValidator() {
-        this(null);
-    }
-
-
     public UserValidator(UserService userService) {
         this.userService = userService;
     }
@@ -33,5 +28,5 @@ public class UserValidator implements Validator {
             errors.rejectValue("username", "", "Пользователь с таким именем уже существует");
         }
     }
-
 }
+
