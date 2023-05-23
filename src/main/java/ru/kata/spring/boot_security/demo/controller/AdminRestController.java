@@ -58,7 +58,7 @@ public class AdminRestController {
 
     @PutMapping(value = "/user")
     public ResponseEntity<User> editUser(@RequestBody User editUser) {
-        System.out.println(editUser.toString());
+//        System.out.println(editUser.toString());
         userService.updateUser(editUser);
         return ResponseEntity.ok().body(editUser);
     }

@@ -18,14 +18,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    @Autowired
+//    @Autowired
     public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public List<User> getUsers() {
         return userRepository.findAll();
     }
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void deleteUser(Long id) { userRepository.deleteById(id);}
 
     @Override
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public User findUser(Long id) {
         User userFind = null;
         Optional<User> optionalUser = userRepository.findById(id);
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userFind;
     }
     @Override
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public User findUserByName(String nameUser) {
         User userFindByName = null;
         Optional<User> optionalUser = userRepository.findByUserName(nameUser);
@@ -74,12 +74,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = userRepository.findByUserName(username);
 
         if (optionalUser.isEmpty()) {
-            System.out.println(username);
+//            System.out.println(username);
             throw new UsernameNotFoundException("Пользователь с таким именем не найден");
         }
         return optionalUser.get();

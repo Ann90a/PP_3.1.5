@@ -22,7 +22,7 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        System.out.println("uuuOk");
+//        System.out.println("uuuOk");
         User user = (User) target;
         if (userService.findUserByName(user.getUsername()) != null) {
             errors.rejectValue("username", "", "Пользователь с таким именем уже существует");
